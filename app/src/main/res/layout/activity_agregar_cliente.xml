@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Campo para el nombre del cliente -->
+    <EditText
+        android:id="@+id/editTextNombreCliente"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nombre del cliente..."
+        android:textColorHint="#A3A7AA"
+        android:padding="8dp"
+        android:textSize="18sp"
+        android:textColor="@android:color/black"/>
+
+    <!-- Campo para la dirección del cliente -->
+    <EditText
+        android:id="@+id/editTextDireccionCliente"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Dirección del cliente..."
+        android:textColorHint="#A3A7AA"
+        android:padding="8dp"
+        android:textSize="18sp"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Campo para el email del cliente -->
+    <EditText
+        android:id="@+id/editTextEmailCliente"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Correo electrónico del cliente..."
+        android:textColorHint="#A3A7AA"
+        android:padding="8dp"
+        android:textSize="18sp"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Botones para Guardar y Cancelar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp">
+
+        <!-- Botón Guardar -->
+        <Button
+            android:id="@+id/btnGuardarCliente"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:padding="8dp"
+            android:backgroundTint="#2196F3"
+            android:text="Guardar"
+            android:textColor="@android:color/white"/>
+
+        <!-- Botón Cancelar -->
+        <Button
+            android:id="@+id/btnCancelarCliente"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:padding="8dp"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:text="Cancelar"
+            android:textColor="@android:color/white"/>
+
+    </LinearLayout>
+
+</LinearLayout>

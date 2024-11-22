@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center">
+
+    <!-- Botón para agregar nuevo cliente -->
+    <Button
+        android:id="@+id/btnNuevoCliente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nuevo Cliente"
+        android:layout_gravity="center_horizontal"
+        android:padding="12dp"
+        android:backgroundTint="#2196F3"
+        android:textColor="@android:color/white" />
+
+
+    <!-- RecyclerView para la lista de clientes -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewClientes"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="16dp"/>
+
+    <!-- LinearLayout para los botones de reporte PDF y Word en la misma línea -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="16dp">
+
+        <!-- Botón para generar reporte PDF -->
+        <Button
+            android:id="@+id/btnReportePDF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reporte PDF"
+            android:padding="12dp"
+            android:backgroundTint="#2196F3"
+            android:textColor="@android:color/white"
+            android:layout_marginEnd="8dp" />
+
+        <!-- Botón para generar reporte Word -->
+        <Button
+            android:id="@+id/btnReporteWord"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reporte Word"
+            android:padding="12dp"
+            android:backgroundTint="#2196F3"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+</LinearLayout>

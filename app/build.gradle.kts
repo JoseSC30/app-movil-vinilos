@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.emprendedor"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -53,4 +53,7 @@ dependencies {
     ksp("androidx.room:room-compiler:$room_version")
     // Para soporte de corrutinas
     implementation("androidx.room:room-ktx:$room_version")
+
+    implementation("com.itextpdf:itext7-core:7.2.4")   // para reporte pdf
+    implementation("org.apache.poi:poi-ooxml:5.2.3")   // para reporte word
 }

@@ -49,6 +49,7 @@ class CategoriaController (
 
     //------ Metodos de navegacion ------
 
+
     fun navigateToCategorias() {
         val intent = Intent(context, CategoriasActivity::class.java)
         context.startActivity(intent)
@@ -62,4 +63,8 @@ class CategoriaController (
         val intent = Intent(context, AgregarCategoriaActivity::class.java)
         context.startActivity(intent)
     }
+
 }
+
+
+

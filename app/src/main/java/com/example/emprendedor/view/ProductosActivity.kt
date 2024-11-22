@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 //
 import com.example.emprendedor.R
 import com.example.emprendedor.controller.CategoriaController
+import com.example.emprendedor.controller.ClienteController
 import com.example.emprendedor.controller.ProductoController
 //
 import com.google.android.material.navigation.NavigationView
@@ -26,6 +27,7 @@ class ProductosActivity : AppCompatActivity() {
 
     private lateinit var categoriaController: CategoriaController
     private lateinit var productoController: ProductoController
+    private lateinit var clienteController: ClienteController
 
     private lateinit var recyclerView: RecyclerView
 
@@ -40,6 +42,7 @@ class ProductosActivity : AppCompatActivity() {
         // Inicializar el controlador de categorías
         categoriaController = CategoriaController(this)
         productoController = ProductoController(this)
+        clienteController = ClienteController(this)
 
         //Accion del boton "Nuevo Vinilo".
         val btnNuevoProducto = contentFrameLayout.findViewById<Button>(R.id.btnNuevoProducto)
@@ -100,6 +103,9 @@ class ProductosActivity : AppCompatActivity() {
                 }
                 R.id.nav_categorias -> {
                     categoriaController.navigateToCategorias()
+                }
+                R.id.nav_clientes -> {
+                    clienteController.navigateToClientes()
                 }
             }
             drawerLayout.closeDrawer(GravityCompat.START)
