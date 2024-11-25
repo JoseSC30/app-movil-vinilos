@@ -2,12 +2,14 @@ package com.example.emprendedor.controller
 
 import android.content.Context
 import android.content.Intent
+import android.widget.Toast
 //------ Importacion de ficheros propios ------
 import com.example.emprendedor.model.AppDatabase
 import com.example.emprendedor.model.Categoria
 import com.example.emprendedor.model.Producto
 import com.example.emprendedor.view.AgregarProductoActivity
 import com.example.emprendedor.view.ProductosActivity
+import com.example.emprendedor.controller.PatronProxy.ProxyAccionProducto
 //
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -15,10 +17,13 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 
-class ProductoController(
+class ProductoController (
     private val context: Context) {
 
     private val db: AppDatabase = AppDatabase.getInstance(context)
+
+    private val proxy = ProxyAccionProducto(context)
+
 
     fun obtenerProductos(): List<Producto> {
         return db.productoDao().obtenerTodos()
@@ -42,24 +47,22 @@ class ProductoController(
         stock: Int,
         descripcion: String? = null,
         imagen: String? = null,
-        categoriaId: Int? = null) {
-        CoroutineScope(Dispatchers.IO).launch {
-            val nuevoProducto = Producto(
-                nombre = nombre,
-                artista = artista,
-                year = year,
-                precio = precio,
-                stock = stock,
-                descripcion = descripcion,
-                imagen = imagen,
-                categoriaId = categoriaId
-            )
-            val prodId = db.productoDao().insertarProducto(nuevoProducto)
+        categoriaId: Int? = null) : Boolean {
+        var verificador = true
 
-            withContext(Dispatchers.Main) {
-                navigateToProductosAfterFinishing()
-            }
-        }
+        val nuevoProducto = Producto(
+            nombre = nombre,
+            artista = artista,
+            year = year,
+            precio = precio,
+            stock = stock,
+            descripcion = descripcion,
+            imagen = imagen,
+            categoriaId = categoriaId
+        )
+
+        var a = proxy.registrarProducto(nuevoProducto)
+        return verificador
     }
 
     fun actualizarProducto(

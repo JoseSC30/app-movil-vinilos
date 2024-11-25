@@ -9,8 +9,12 @@ import android.widget.Spinner
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+//
 import com.example.emprendedor.R
 import com.example.emprendedor.controller.ProductoController
+import com.example.emprendedor.model.Producto
+import com.example.emprendedor.controller.PatronProxy.ProxyAccionProducto
+//
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -20,6 +24,7 @@ class AgregarProductoActivity : AppCompatActivity() {
 
     private lateinit var productoController: ProductoController
     val categorias = mutableListOf<String>()
+    val proxy = ProxyAccionProducto(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -130,24 +135,18 @@ class AgregarProductoActivity : AppCompatActivity() {
                 val descripcion = descripcionEditText.text.toString().trim()
                 val categoriaSeleccionada = categoriaSpinner.selectedItem.toString()
 
-                if (nombre.isNotEmpty() &&
-                    artista.isNotEmpty() &&
-                    year.isNotEmpty() &&
-                    precio.isNotEmpty() &&
-                    stock.isNotEmpty()
-                ) {
-                    productoController.agregarProducto(
-                        nombre,
-                        artista,
-                        year,
-                        precio.toDouble(),
-                        stock.toInt(),
-                        descripcion,
-                        null,
-                        categorias.find { it.nombreCategoria == categoriaSeleccionada }?.id
-//                        categoriaSeleccionada.toInt()
-                    )
-                } else {
+                var check = productoController.agregarProducto(
+                    nombre,
+                    artista,
+                    year,
+                    precio.toDouble(),
+                    stock.toInt(),
+                    descripcion,
+                    null,
+                    categorias.find { it.nombreCategoria == categoriaSeleccionada }?.id
+                )
+
+                if (check == false) {
                     // Mostrar un mensaje de error o realizar alguna acción si el campo está vacío
                     Toast.makeText(
                         this,
